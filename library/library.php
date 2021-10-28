@@ -5,7 +5,7 @@
 define('DB_SERVER', 'localhost');
 define('DB_SERVER_USERNAME', 'root');
 define('DB_SERVER_PASSWORD', '');
-define('DB_DATABASE', 'general_ledger_account');
+define('DB_DATABASE', 'people_health_pharmacy');
 define('USE_PCONNECT', 'false');
 define('DB_CHARSET', "utf8mb4"); // utf8
 // ================================
