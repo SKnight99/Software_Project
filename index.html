@@ -10,7 +10,7 @@
 	<!-- Title Tag  -->
     <title>PHP Sales Reporting System</title>
 	<!-- Web Font -->
-	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">	
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<!-- Magnific Popup -->
@@ -33,10 +33,10 @@
     <link rel="stylesheet" href="css/slicknav.min.css">
 
 	<link rel="stylesheet" href="style.css">
-	
+
 </head>
 <body class="js">
-	
+
 	<div class="wrapper fadeInDown">
 		<div id="formContent">
 		<!-- Tabs Titles -->
@@ -47,10 +47,10 @@
 		</div>
 
 		<!-- Login Form -->
-		<form>
-			<input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-			<input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-			<input type="submit" class="fadeIn fourth" value="Log In">
+		<form action="php/login.php">
+			<input type="text" class="fadeIn second" name="name" placeholder="login">
+			<input type="text" class="fadeIn third" name="password" placeholder="password">
+			<input type="submit" name = "login "class="fadeIn fourth" value="Log In">
 		</form>
 
 		<!-- Remind Passowrd -->
@@ -60,9 +60,7 @@
 
 		</div>
 	</div>
-	
-		
-	
+
 	<!-- Jquery -->
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.0.js"></script>
