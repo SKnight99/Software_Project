@@ -273,11 +273,3 @@ input[type=text]:placeholder {
 #icon {
   width: 60%;
 }
-
-.avoid-clicks {
-  pointer-events: none;
-}
-
-.cursor-not-allowed {
-  cursor: not-allowed;
-}
