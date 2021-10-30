@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Title Tag  -->
-    <title>PHP Sales Reporting System</title>
+    <title><?php echo $pageTitle ?></title>
     <!-- Web Font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
     <!-- Bootstrap -->
@@ -32,9 +32,12 @@
     <link rel="stylesheet" href="css/owl-carousel.css">
     <!-- Slicknav  -->
     <link rel="stylesheet" href="css/slicknav.min.css">
+
+    <?php echo $additionalReferences ?>
 </head>
 
 <body class="js">
     <?php
+    $pageTitle = "PHP Sales Reporting System";
     include "library/library.php";
     ?>
