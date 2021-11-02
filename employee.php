@@ -23,7 +23,7 @@ if (isset($_POST["add_new_employee"])) {
 
 
 <a href="#add" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-<a href="#del" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Delete Employee</span></a>
+<a href="dbConn.php" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Delete Employee</span></a>
 <a href="#modify" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Modify Employee</span></a>
 
 <!-- Add Employee Modal -->
