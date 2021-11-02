@@ -5,18 +5,18 @@ if(isset($_POST['login']))
     $username = $_POST['name'];
     $password = $_POST['password'];
 
-    $connection = mysqli_connect($server_name,$user_name,$dbpassword,$dbname);
+    $conn = new mysqli('localhost','root','','people_health_pharmacy');
     $query="SELECT * From msp WHERE username = $username";
-    $query_run=mysqli_query($connection,$query);
+    $query_run=mysqli_query($conn,$query);
     $usertypes = mysqli_fetch_array($query_run);
 
     if($password == $usertypes['password'])
     {
       $_SESSION['success'] = "Login";
       if ($usertypes['position'] == "Employer") {
-        header('library/library.php');
+        header('emplyee.php');
       }else if ($usertypes['position'] == "Employee"){
-        header('library/library.php');
+        header('product/displayproduct.php');
       }
     }else{
       header('index.html');
