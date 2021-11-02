@@ -59,7 +59,7 @@ if (isset($_POST["add_new_employee"])) {
                             <textarea class="form-control" name="address" rows="5"></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Date of Birth</label>
+                            <label>Date of poop</label>
                             <input type="date" class="form-control" name="dob" required>
                         </div>
                         <div class="form-group">
