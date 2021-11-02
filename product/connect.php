@@ -1,5 +1,5 @@
 <?php
-$con=new mysqli('localhost','root','','product','4306');
+$con=new mysqli('localhost','root','','people_health_pharmacy');
 
 if(!$con)
 {
