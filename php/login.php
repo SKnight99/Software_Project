@@ -10,7 +10,7 @@ if(isset($_POST['login']))
     $query_run=mysqli_query($conn,$query);
     $usertypes = mysqli_fetch_array($query_run);
 
-    if($password == $usertypes['password'])
+    if($password == $usertypes['pwd'])
     {
       $_SESSION['success'] = "Login";
       if ($usertypes['position'] == "Employer") {
