@@ -32,6 +32,9 @@
     <link rel="stylesheet" href="css/owl-carousel.css">
     <!-- Slicknav  -->
     <link rel="stylesheet" href="css/slicknav.min.css">
+    <!-- jQuery 3.6.0 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 
     <?php echo $additionalReferences ?>
 </head>
