@@ -8593,7 +8593,8 @@ a.text-danger:hover {
 }
 
 .text-light {
-    color: #f8f9fa!important
+    color: #f8f9fa!important;
+    text-decoration: none!important;
 }
 
 a.text-light:focus,

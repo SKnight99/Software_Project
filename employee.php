@@ -49,9 +49,15 @@ if (isset($_POST["modify_employee"])) {
 }
 ?>
 
-<div class="container my-5">
+<div id="content__header">
+    <span class="title">
+        Employee Management
+    </span>
+    <button class="btn btn-primary" style="margin-right: 55px;"><a href="#add" class="text-light" data-toggle="modal"><span>Add Employee</span></a></button>
+</div>
 
-    <button class="btn btn-primary"><a href="#add" class="text-light" data-toggle="modal"><span>Add Employee</span></a></button>
+<div id="content">
+
 
     <table class="table">
         <thead>
