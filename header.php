@@ -47,7 +47,7 @@
 
 <body class="js">
     <header id="header">
-        <div id="header__logo" class="flex-center">
+        <divx id="header__logo" class="flex-center">
             <a href="index" class="none-decoration" style="height: 100%;">
                 <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
                     <span id="logo-txt">PHP<em></em></span>
@@ -61,11 +61,11 @@
                 <i class="fa fa-md fa-fw fa-home"></i>
                 <span class="">Dashboard</span>
             </a>
-            <a href="admin" class="">
+            <a href="employee.php" class="">
                 <i class="fa fa-md fa-fw fa-cube txt-color-blue"></i>
                 <span class="">Employee Management</span>
             </a>
-            <a href="profile" class="">
+            <a href="product/displayproduct.php" class="">
                 <i class="fa fa-md fa-fw fa-cube txt-color-blue"></i>
                 <span class="">Product Management</span>
             </a>

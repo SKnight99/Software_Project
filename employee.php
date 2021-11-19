@@ -53,7 +53,7 @@ if (isset($_POST["modify_employee"])) {
     <span class="title">
         Employee Management
     </span>
-    <button class="btn btn-primary" style="margin-right: 55px;"><a href="#add" class="text-light" data-toggle="modal"><span>Add Employee</span></a></button>
+    <button class="btn btn-info" style="margin-right: 55px;"><a href="#add" class="text-light" data-toggle="modal"><span>Add Employee</span></a></button>
 </div>
 
 <div id="content">

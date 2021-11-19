@@ -52,7 +52,7 @@
     width: 36px;
     height: 28px;
     margin-top: 7px;
-    background: #7ac241;
+    background: #56baed;
     color: #e8efe7;
     border-radius: 5px 0 0 5px;
     cursor: pointer;
@@ -65,7 +65,6 @@
     width: 40px;
     padding-right: 5px;
     color: #fff;
-    background: #8fb489;
 }
 
 #sidebar #copyright {
