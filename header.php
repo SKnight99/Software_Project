@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <!-- Meta Tag  -->
@@ -32,6 +32,10 @@
     <link rel="stylesheet" href="css/owl-carousel.css">
     <!-- Slicknav  -->
     <link rel="stylesheet" href="css/slicknav.min.css">
+    <!-- header -->
+    <link rel="stylesheet" href="css/header.css">
+    <!-- sidebar -->
+    <link rel="stylesheet" href="css/sidebar.css">
     <!-- jQuery 3.6.0 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -40,6 +44,46 @@
 </head>
 
 <body class="js">
+    <header id="header">
+        <div id="header__logo" class="flex-center">
+            <a href="index" class="none-decoration" style="height: 100%;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                    <span id="logo-txt">PHP<em></em></span>
+                </div>
+            </a>
+        </div>
+    </header>
+    <aside id="sidebar">
+        <nav>
+            <a href="index" class="">
+                <i class="fa fa-md fa-fw fa-home"></i>
+                <span class="">Dashboard</span>
+            </a>
+            <a href="admin" class="">
+                <i class="fa fa-md fa-fw fa-cube txt-color-blue"></i>
+                <span class="">Employee Management</span>
+            </a>
+            <a href="profile" class="">
+                <i class="fa fa-md fa-fw fa-cube txt-color-blue"></i>
+                <span class="">Product Management</span>
+            </a>
+            <a href="member" class="">
+                <i class="fa fa-md fa-fw fa-cube txt-color-blue"></i>
+                <span class="">Sales Management</span>
+            </a>
+            <a href="todoist" class="">
+                <i class="fa fa-md fa-fw fa-list-ol txt-color-blue"></i>
+                <span class="">Sale Reports</span>
+            </a>
+        </nav>
+        <div id="sidebar-controller">
+            <i class="fa fa-arrow-circle-left hit"></i>
+        </div>
+        <div id="copyright" class="hidden-xs">
+            <i class="fa fa-gear fa-spin"></i>
+            Copy Right - PHP<br> People Health Pharmacy © 2021
+        </div>
+    </aside>
     <?php
     $pageTitle = "PHP Sales Reporting System";
     include "library/library.php";
