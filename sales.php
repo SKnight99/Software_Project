@@ -7,24 +7,31 @@ $additionalReferences = '
 include "header.php";
 
 if (isset($_POST["add_new_sales"])) {
-    $infoRow = tep_fetch_object(tep_query("SELECT * FROM product WHERE ProductID = '" . $_POST["productName"] . "'"));
-    $totalSales = $_POST["quantity"] * $infoRow->Price;
+    $productTable = tep_fetch_object(tep_query("SELECT * FROM product WHERE ProductID = '" . $_POST["productName"] . "'"));
+    $totalSales = $_POST["quantity"] * $productTable->Price;
+    $onhand_quantity = $productTable->Quantity;
+    if ($onhand_quantity < $_POST["quantity"]) {
+        echo '
+        <script>
+        alert("Inventory shortage.");
+        </script>
+        ';
+    } else {
+        tep_query("
+        INSERT INTO sales (
+            ProductName, InvoiceNo, InvoiceDate, Quantity, TotalSales
+        )
+        VALUES (
+            '" . $_POST["productName"] . "', '" . $_POST["invoiceNo"] . "', '" . $_POST["invoiceDate"] . "', '" . $_POST["quantity"] . "', '" . $totalSales . "'
+        )
+        ");
 
-    tep_query("
-    INSERT INTO sales (
-        ProductName, InvoiceNo, InvoiceDate, Quantity, TotalSales
-    )
-    VALUES (
-        '" . $_POST["productName"] . "', '" . $_POST["invoiceNo"] . "', '" . $_POST["invoiceDate"] . "', '" . $_POST["quantity"] . "', '" . $totalSales . "'
-    )
-    ");
-
-    tep_query("
-    UPDATE product
-    SET Quantity = Quantity - '" . $_POST["quantity"] . "'
-    WHERE ProductID = '" . $_POST["productName"] . "'
-    ");
-    echo redirect("sales.php?add_new_sales=success");
+        tep_query("UPDATE product SET 
+        Quantity = Quantity - '" . $_POST["quantity"] . "'
+        WHERE ProductID = '" . $_POST["productName"] . "'
+        ");
+        echo redirect("sales.php?add_new_sales=success");
+    }
 }
 
 if (isset($_POST["del_sales"])) {
@@ -33,14 +40,49 @@ if (isset($_POST["del_sales"])) {
 }
 
 if (isset($_POST["modify_sales"])) {
-    tep_query("UPDATE sales SET 
-    ProductName = '" . $_POST["productName"] . "',
-    InvoiceDate = '" . $_POST["invoiceDate"] . "',
-    InvoiceNo = '" . $_POST["invoiceNo"] . "',
-    Quantity = '" . $_POST["quantity"] . "'
-    WHERE id = '" . $_POST["id"] . "'
-    ");
-    echo redirect("sales.php?modify_sales=success");
+    // original details
+    $salesTable = tep_fetch_object(tep_query("SELECT * FROM sales WHERE SalesID = '" . $_POST["id"] . "'"));
+    $s_productName = $salesTable->ProductName;
+    $s_quantity = $salesTable->Quantity;
+    $onhand_quantity = $productTable->Quantity;
+    $productTable = tep_fetch_object(tep_query("SELECT * FROM product WHERE ProductID = '" . $_POST["productName"] . "'"));
+    $p_quantity = $productTable->Quantity;
+
+
+    if ($s_productName == $_POST["productName"] && $s_quantity < $_POST["quantity"] && $onhand_quantity < $_POST["quantity"] || $s_productName != $_POST["productName"] && $p_quantity < $_POST["quantity"]) {
+        echo '
+        <script>
+        alert("Inventory shortage.");
+        </script>
+        ';
+    } else {
+        // add back the quantity
+        tep_query("UPDATE product SET
+        Quantity = Quantity + '" . $s_quantity . "'
+        WHERE ProductID = '" . $s_productName . "'
+        ");
+
+        $productTable = tep_fetch_object(tep_query("SELECT * FROM product WHERE ProductID = '" . $_POST["productName"] . "'"));
+        $totalSales = $_POST["quantity"] * $productTable->Price;
+
+        tep_query("UPDATE sales SET 
+        ProductName = '" . $_POST["productName"] . "',
+        InvoiceDate = '" . $_POST["invoiceDate"] . "',
+        InvoiceNo = '" . $_POST["invoiceNo"] . "',
+        Quantity = '" . $_POST["quantity"] . "',
+        TotalSales = '" . $totalSales . "'
+        WHERE SalesID = '" . $_POST["id"] . "'
+        ");
+
+        // minus with new quantity
+        tep_query("
+        UPDATE product
+        SET Quantity = Quantity - '" . $_POST["quantity"] . "'
+        WHERE ProductID = '" . $_POST["productName"] . "'
+        ");
+
+        echo redirect("sales.php?modify_sales=success");
+    }
 }
 ?>
 
@@ -55,7 +97,7 @@ if (isset($_POST["modify_sales"])) {
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">ID</th>
+                <th scope="col">No</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Invoice Date</th>
                 <th scope="col">Invoice Number</th>
@@ -78,16 +120,16 @@ if (isset($_POST["modify_sales"])) {
                 $totalSales = $infoRow->TotalSales;
 
                 $product = tep_fetch_object(tep_query("SELECT * FROM product WHERE ProductID = '" . $productName . "'"));
-                $productName = $product->ProductName;
+                $new_productName = $product->ProductName;
 
                 echo '
                 <tr>
-                <td scope="rol">' . $id . '</td>
-                <td>' . $productName . '</td>
+                <td scope="rol">' . $cnt . '</td>
+                <td>' . $new_productName . '</td>
                 <td>' . $invoiceDate . '</td>
                 <td>' . $invoiceNo . '</td>
                 <td>' . $quantity . '</td>
-                <td>' . $totalSales . '</td>
+                <td>RM' . $totalSales . '</td>
 
                 <td>
                 <button class="btn btn-info">
@@ -212,7 +254,18 @@ if (isset($_POST["modify_sales"])) {
                         <input type="hidden" class="get_id" name="id">
                         <div class="form-group">
                             <label>Product Name</label>
-                            <input type="text" class="form-control get_productName" name="productName" required>
+                            <br>
+                            <select name="productName" class="get_productName" required>
+                                <option value="">--- Select ---</option>
+                                <?php
+                                $qryRow = tep_query("SELECT * FROM product ORDER BY ProductName");
+                                while ($infoRow = tep_fetch_object($qryRow)) {
+                                    echo '
+                                    <option value=' . $infoRow->ProductID . '>' . $infoRow->ProductName . '</option>
+                                    ';
+                                }
+                                ?>
+                            </select>
                             <span class="errMsg nameErr"></span>
                         </div>
                         <div class="form-group">
