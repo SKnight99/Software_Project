@@ -69,7 +69,7 @@
                 <i class="fa fa-md fa-fw fa-cube txt-color-blue"></i>
                 <span class="">Product Management</span>
             </a>
-            <a href="member" class="">
+            <a href="sales.php" class="">
                 <i class="fa fa-md fa-fw fa-cube txt-color-blue"></i>
                 <span class="">Sales Management</span>
             </a>
