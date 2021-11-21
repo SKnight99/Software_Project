@@ -57,10 +57,6 @@
     </header>
     <aside id="sidebar">
         <nav>
-            <a href="index" class="">
-                <i class="fa fa-md fa-fw fa-home"></i>
-                <span class="">Dashboard</span>
-            </a>
             <a href="employee.php" class="">
                 <i class="fa fa-md fa-fw fa-cube txt-color-blue"></i>
                 <span class="">Employee Management</span>
@@ -76,6 +72,10 @@
             <a href="todoist" class="">
                 <i class="fa fa-md fa-fw fa-list-ol txt-color-blue"></i>
                 <span class="">Sale Reports</span>
+            </a>
+            <a href="Generate.php" class="">
+                <i class="fa fa-md fa-fw fa-list-ol txt-color-blue"></i>
+                <span class="">Generate Report</span>
             </a>
         </nav>
         <div id="sidebar-controller">
