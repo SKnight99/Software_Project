@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "Sale Reports";
+$pageTitle = "Predict Sales";
 $additionalReferences = '
 <link rel="stylesheet" href="css/modal.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -9,7 +9,7 @@ include "header.php";
 
 <div id="content__header">
     <span class="title">
-        Sales Report
+        Predict Sales
     </span>
 </div>
 <div id="content">
