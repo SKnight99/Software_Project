@@ -77,6 +77,10 @@
                 <i class="fa fa-md fa-fw fa-list-ol txt-color-blue"></i>
                 <span class="">Generate Report</span>
             </a>
+            <a href="predictSales.php" class="">
+                <i class="fa fa-md fa-fw fa-list-ol txt-color-blue"></i>
+                <span class="">Predict Sales</span>
+            </a>
         </nav>
         <div id="sidebar-controller">
             <i class="fa fa-arrow-circle-left hit"></i>
