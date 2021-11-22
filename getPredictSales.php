@@ -19,11 +19,12 @@ include "header.php";
     $month = $_POST['month'];
     $conn=new mysqli('localhost','root','','people_health_pharmacy');
     
-    $result = mysqli_query($conn ,"SELECT ProductName,EXTRACT(MONTH FROM InvoiceDate) AS InvoiceDate, MAX(Quantity)AS Quantity FROM sales");
+    $result = mysqli_query($conn ,"SELECT ProductCategory AS ProductCategory, ProductName,EXTRACT(MONTH FROM InvoiceDate) AS InvoiceDate, MAX(Quantity)AS Quantity FROM sales");
   ?>
   <table class="table table-bordered" id="dashboard" width="100%" cellspacing="0">
     <thead>
       <tr>
+        <th scope="col">Product Category</th>
         <th scope="col">Product Name</th>
         <th scope="col">Month</th>
           <th scope="col">Highest sales</th>
@@ -34,15 +35,10 @@ include "header.php";
       while($row = mysqli_fetch_array($result))
           {
               echo "<tr>";
+                 echo "<td>" . $row['ProductCategory'] . "</td>";
                  echo "<td>" . $row['ProductName'] . "</td>";
                  echo "<td>" . $row['InvoiceDate'] . "</td>";
                   echo "<td>" . $row['Quantity'] . "</td>";
-                  //echo "<td>" . $row['SalesID'] . "</td>";
-                  //echo "<td>" . $row['ProductName'] . "</td>";
-                  //echo "<td>" . $row['InvoiceDate'] . "</td>";
-                  //echo "<td>" . $row['InvoiceNo'] . "</td>";
-                  //echo "<td>" . $row['Quantity'] . "</td>";
-                  //echo "<td>" . $row['TotalSales'] . "</td>";
               echo "</tr>";
           }
     ?>

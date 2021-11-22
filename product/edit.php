@@ -5,6 +5,7 @@ $ProductID=$_GET['editProductID'];
 $sql="Select * from product where ProductID=$ProductID";
 $result=mysqli_query($con,$sql);
 $row=mysqli_fetch_assoc($result);
+$ProductCategory=$row['ProductCategory'];
 $ProductName=$row['ProductName'];
 $Description=$row['Description'];
 $Quantity=$row['Quantity'];
@@ -12,13 +13,14 @@ $Price=$row['Price'];
 
 if(isset($_POST['submit']))
 {
-	if (isset($_POST["ProductName"])&& isset($_POST["Description"])&&isset($_POST["Quantity"])&&isset($_POST["Price"])) {
+	if (isset($_POST["ProductCategory"])&&isset($_POST["ProductName"])&& isset($_POST["Description"])&&isset($_POST["Quantity"])&&isset($_POST["Price"])) {
     
+    $ProductCategory=$_POST['ProductCategory'];
 	$ProductName=$_POST['ProductName'];
 	$Description=$_POST['Description'];
 	$Quantity=$_POST['Quantity'];
 	$Price=$_POST['Price'];
-	$sql="update product set ProductID=$ProductID,ProductName='$ProductName',Description='$Description',Quantity='$Quantity',Price=$Price where ProductID=$ProductID";	
+	$sql="update product set ProductID=$ProductID,ProductCategory='$ProductCategory',ProductName='$ProductName',Description='$Description',Quantity='$Quantity',Price=$Price where ProductID=$ProductID";	
     
 	$result=mysqli_query($con,$sql);
 	
@@ -49,7 +51,12 @@ die(mysqli_error($con));
     <h1>Edit Product</h1>
 	<div class="container my-5">
 	<form method="post">
- 
+        
+   <div class="mb-3">
+    <label>ProductCategory</label>
+    <input type="text" class="form-control" placeholder="Enter Product Category" name="ProductCategory" value=<?php echo $ProductCategory?>>
+  </div>
+        
   <div class="mb-3">
     <label>ProductName</label>
     <input type="text" class="form-control" placeholder="Enter Product Name" name="ProductName" value=<?php echo $ProductName?>>

@@ -41,7 +41,10 @@ die(mysqli_error($con));
     <h1>Product</h1>
 	<div class="container my-5">
 	<form method="post">
- 
+ <div class="mb-3">
+    <label>ProductCategory</label>
+    <input type="text" class="form-control" placeholder="Enter Product Category" name="ProductCategory">
+  </div>
   <div class="mb-3">
     <label>ProductName</label>
     <input type="text" class="form-control" placeholder="Enter Product Name" name="ProductName">

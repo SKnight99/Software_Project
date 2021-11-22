@@ -23,6 +23,7 @@ include 'connect.php';
       <thead>
         <tr>
           <th scope="col">ProductID</th>
+          <th scope="col">ProductCategory</th>
           <th scope="col">ProductName</th>
           <th scope="col">Description</th>
           <th scope="col">Quantity</th>
@@ -36,12 +37,14 @@ include 'connect.php';
       if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
           $ProductID = $row['ProductID'];
+          $ProductCategory = $row['ProductCategory'];
           $ProductName = $row['ProductName'];
           $Description = $row['Description'];
           $Quantity = $row['Quantity'];
           $Price = $row['Price'];
           echo '<tr>
       <th scope="row">' . $ProductID . '</th>
+      <td>' . $ProductCategory . '</td>
       <td>' . $ProductName . '</td>
       <td>' . $Description . '</td>
       <td>' . $Quantity . '</td>
