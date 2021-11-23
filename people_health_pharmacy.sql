@@ -60,7 +60,7 @@ CREATE TABLE `product` (
   `ProductName` varchar(200) DEFAULT NULL,
   `Description` varchar(200) DEFAULT NULL,
   `Quantity` varchar(200) DEFAULT NULL,
-  `Price` decimal(5,2) DEFAULT NULL,
+  `Price` decimal(10,2) DEFAULT NULL,
   `CategoryID` int(11) DEFAULT NULL,
   `ProductCategory` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -87,7 +87,7 @@ CREATE TABLE `sales` (
   `InvoiceNo` varchar(200) NOT NULL,
   `Quantity` varchar(200) NOT NULL,
   `ProductCategory` varchar(200) DEFAULT NULL,
-  `TotalSales` decimal(5,2) NOT NULL
+  `TotalSales` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
